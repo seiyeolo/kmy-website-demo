@@ -397,17 +397,14 @@ textarea:focus-visible {
 .logo-text {
   font-weight: 800;
   font-size: var(--text-sm);
-  line-height: var(--leading-tight);
+  line-height: 1.2;
   color: #ffffff;
   margin-left: 8px;
-  white-space: normal;
-  word-break: keep-all;
 }
 
 @media (min-width: 768px) {
   .logo-text {
-    font-size: var(--text-lg);
-    white-space: nowrap;
+    font-size: var(--text-base);
   }
 }
 
@@ -556,10 +553,10 @@ textarea:focus-visible {
 }
 
 .footer-info .logo-text {
-  font-family: var(--font-heading);
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   color: #fff;
   font-weight: 700;
+  line-height: 1.2;
 }
 
 .footer-info p {
