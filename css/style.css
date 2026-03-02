@@ -643,13 +643,7 @@ textarea:focus-visible {
 
 /* ===== 히어로 섹션 ===== */
 .hero {
-  background: linear-gradient(
-    160deg,
-    #0f2027 0%,
-    var(--color-primary-dark) 40%,
-    var(--color-primary) 70%,
-    var(--color-primary-light) 100%
-  );
+  background: transparent;
   min-height: 85vh;
   display: flex;
   align-items: center;
@@ -657,7 +651,7 @@ textarea:focus-visible {
   overflow: hidden;
 }
 
-/* 장식용 배경 패턴 */
+/* 장식용 배경 패턴 (파티클 캔버스와 어우러지게 투명도 낮춤) */
 .hero::before {
   content: "";
   position: absolute;
@@ -667,9 +661,8 @@ textarea:focus-visible {
   height: 800px;
   background: radial-gradient(
     circle,
-    rgba(232, 168, 56, 0.12) 0%,
-    rgba(232, 168, 56, 0.04) 40%,
-    transparent 70%
+    rgba(232, 168, 56, 0.08) 0%,
+    transparent 60%
   );
   border-radius: 50%;
   animation: floatOrb 20s ease-in-out infinite;
@@ -684,9 +677,8 @@ textarea:focus-visible {
   height: 600px;
   background: radial-gradient(
     circle,
-    rgba(45, 143, 111, 0.2) 0%,
-    rgba(45, 143, 111, 0.05) 40%,
-    transparent 70%
+    rgba(45, 143, 111, 0.08) 0%,
+    transparent 60%
   );
   border-radius: 50%;
   animation: floatOrb 25s ease-in-out infinite reverse;
