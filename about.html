@@ -10,10 +10,13 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- Canvas for Background Animation -->
+  <canvas id="bg-canvas"></canvas>
+
   <a class="skip-link" href="#main">본문 바로가기</a>
 
   <!-- ===== 헤더 ===== -->
@@ -99,7 +102,7 @@
       <div class="container">
         <div class="sub-layout">
           <!-- 사이드 내비게이션 -->
-          <aside class="side-nav">
+          <aside class="side-nav glass-panel">
             <h3>협회소개</h3>
             <ul>
               <li><a href="#greeting" class="active">인사말</a></li>
@@ -118,7 +121,7 @@
                 <div class="greeting-photo">
                   <img src="https://placehold.co/360x450/1B5E4B/FFFFFF?text=CEO" alt="고미영 대표" loading="lazy">
                 </div>
-                <div class="greeting-text">
+                <div class="greeting-text glass-panel">
                   <p>안녕하세요. <strong>평생친구들</strong> 대표 고미영입니다.</p>
                   <p>세계는 지금 건강관리의 새로운 물결 <strong>"웰니스"</strong>에 주목하고 있습니다. 웰니스는 행복과 건강의 합성어로 신체적 건강을 넘어 정신적·사회적으로도 건강한 상태를 일컫는 말로 삶의 질을 의미합니다.</p>
                   <p>"평생친구들"은 이러한 관점에서 출발했습니다. 평생친구들은 생애주기별 헬스케어 토탈 솔루션을 제공하는 웰니스 컨설팅 전문가를 양성하고 있습니다.</p>
@@ -137,27 +140,27 @@
             <!-- 비전·미션 -->
             <section id="vision" class="sub-section fade-in-up">
               <h2>비전·미션</h2>
-              <div class="vision-box">
+              <div class="vision-box glass-panel">
                 <h3>VISION</h3>
                 <p>건강한 삶, 행복한 사회를 만드는<br>웰니스 교육의 선두주자</p>
               </div>
               <div class="mission-grid">
-                <div class="mission-card">
+                <div class="mission-card glass-panel">
                   <div class="icon">🎓</div>
                   <h4>전문가 양성</h4>
                   <p>체계적인 교육시스템으로 웰니스 전문가를 양성합니다</p>
                 </div>
-                <div class="mission-card">
+                <div class="mission-card glass-panel">
                   <div class="icon">🤝</div>
                   <h4>사회 공헌</h4>
                   <p>지역사회 건강 증진을 위해 다양한 활동을 펼칩니다</p>
                 </div>
-                <div class="mission-card">
+                <div class="mission-card glass-panel">
                   <div class="icon">💡</div>
                   <h4>교육 혁신</h4>
                   <p>시대에 맞는 교육 프로그램을 지속적으로 개발합니다</p>
                 </div>
-                <div class="mission-card">
+                <div class="mission-card glass-panel">
                   <div class="icon">🌱</div>
                   <h4>일자리 창출</h4>
                   <p>안정적인 일자리를 통해 삶의 질을 높입니다</p>
@@ -172,7 +175,7 @@
                 <div class="org-top">대표회장 고미영</div>
                 <div class="org-line"></div>
                 <div class="org-departments">
-                  <div class="org-dept">
+                  <div class="org-dept glass-panel">
                     <h4>교육사업부</h4>
                     <ul>
                       <li>교육과정 기획</li>
@@ -180,7 +183,7 @@
                       <li>교육생 관리</li>
                     </ul>
                   </div>
-                  <div class="org-dept">
+                  <div class="org-dept glass-panel">
                     <h4>운영지원부</h4>
                     <ul>
                       <li>행정 관리</li>
@@ -188,7 +191,7 @@
                       <li>홍보 마케팅</li>
                     </ul>
                   </div>
-                  <div class="org-dept">
+                  <div class="org-dept glass-panel">
                     <h4>대외협력부</h4>
                     <ul>
                       <li>기관 제휴</li>
@@ -203,7 +206,7 @@
             <!-- 교육장 안내 -->
             <section id="facility" class="sub-section fade-in-up">
               <h2>교육장 안내</h2>
-              <div class="facility-info">
+              <div class="facility-info glass-panel">
                 <div class="facility-map">
                   <img src="https://placehold.co/600x300/E0E0E0/7F8C8D?text=Map" alt="교육장 위치 지도" loading="lazy">
                 </div>

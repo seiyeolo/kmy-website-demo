@@ -9,10 +9,13 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- Canvas for Background Animation -->
+  <canvas id="bg-canvas"></canvas>
+
   <a class="skip-link" href="#main">본문 바로가기</a>
 
   <header class="site-header">
@@ -46,7 +49,7 @@
     <div class="sub-content">
       <div class="container">
         <div class="sub-layout">
-          <aside class="side-nav">
+          <aside class="side-nav glass-panel">
             <h3>위탁 및 강사파견</h3>
             <ul>
               <li><a href="#intro" class="active">서비스 소개</a></li>
@@ -62,28 +65,28 @@
 
               <h3 style="margin-bottom: var(--space-xl);">파견 프로세스</h3>
               <div class="process-timeline">
-                <div class="process-step">
+                <div class="process-step glass-panel">
                   <div class="step-number">1</div>
                   <div class="step-content">
                     <h4>문의·상담</h4>
                     <p>전화 또는 온라인으로 파견 문의를 접수합니다</p>
                   </div>
                 </div>
-                <div class="process-step">
+                <div class="process-step glass-panel">
                   <div class="step-number">2</div>
                   <div class="step-content">
                     <h4>프로그램 설계</h4>
                     <p>기관 환경과 대상자를 분석하여 맞춤 프로그램을 설계합니다</p>
                   </div>
                 </div>
-                <div class="process-step">
+                <div class="process-step glass-panel">
                   <div class="step-number">3</div>
                   <div class="step-content">
                     <h4>강사 배정</h4>
                     <p>분야별 전문 강사를 배정하여 최적의 교육을 제공합니다</p>
                   </div>
                 </div>
-                <div class="process-step">
+                <div class="process-step glass-panel">
                   <div class="step-number">4</div>
                   <div class="step-content">
                     <h4>교육 운영</h4>
@@ -94,19 +97,19 @@
 
               <h3 style="margin-bottom: var(--space-xl);">파견 가능 분야</h3>
               <div class="field-icon-grid">
-                <div class="field-item"><div class="icon">🏃</div><span>건강운동</span></div>
-                <div class="field-item"><div class="icon">⛳</div><span>파크골프</span></div>
-                <div class="field-item"><div class="icon">🥤</div><span>스포츠스태킹</span></div>
-                <div class="field-item"><div class="icon">🧓</div><span>실버건강</span></div>
-                <div class="field-item"><div class="icon">🧘</div><span>요가·필라테스</span></div>
-                <div class="field-item"><div class="icon">💃</div><span>댄스·레크리에이션</span></div>
+                <div class="field-item glass-panel"><div class="icon">🏃</div><span>건강운동</span></div>
+                <div class="field-item glass-panel"><div class="icon">⛳</div><span>파크골프</span></div>
+                <div class="field-item glass-panel"><div class="icon">🥤</div><span>스포츠스태킹</span></div>
+                <div class="field-item glass-panel"><div class="icon">🧓</div><span>실버건강</span></div>
+                <div class="field-item glass-panel"><div class="icon">🧘</div><span>요가·필라테스</span></div>
+                <div class="field-item glass-panel"><div class="icon">💃</div><span>댄스·레크리에이션</span></div>
               </div>
             </section>
 
             <!-- 파견 신청 -->
             <section id="request" class="sub-section">
               <h2>위탁/강사파견 신청</h2>
-              <form class="apply-form" id="dispatchForm">
+              <form class="apply-form glass-panel" id="dispatchForm">
                 <div class="form-row">
                   <div class="form-group">
                     <label for="dOrgName">기관명 *</label>

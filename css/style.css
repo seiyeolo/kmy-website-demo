@@ -1351,12 +1351,7 @@ body {
 
 /* ===== 서브 히어로 ===== */
 .sub-hero {
-  background: linear-gradient(
-    160deg,
-    #0f2027 0%,
-    var(--color-primary-dark) 60%,
-    var(--color-primary) 100%
-  );
+  background: transparent;
   padding: var(--space-4xl) 0 var(--space-2xl);
   text-align: center;
   position: relative;

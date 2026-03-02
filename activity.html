@@ -9,10 +9,13 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- Canvas for Background Animation -->
+  <canvas id="bg-canvas"></canvas>
+
   <a class="skip-link" href="#main">본문 바로가기</a>
 
   <header class="site-header">
@@ -46,7 +49,7 @@
     <div class="sub-content">
       <div class="container">
         <div class="sub-layout">
-          <aside class="side-nav">
+          <aside class="side-nav glass-panel">
             <h3>활동현황</h3>
             <ul>
               <li><a href="#external" class="active">대외활동</a></li>
@@ -66,27 +69,27 @@
             <!-- 대외활동 -->
             <div class="tab-panel active" id="external" role="tabpanel">
               <div class="activity-grid">
-                <div class="activity-card">
+                <div class="activity-card glass-panel">
                   <img src="https://placehold.co/400x280/1B5E4B/FFFFFF?text=Volunteer" alt="건강운동 봉사활동" loading="lazy">
                   <div class="card-body"><h4>지역사회 건강운동 봉사활동</h4><span class="date">2026.02.20</span></div>
                 </div>
-                <div class="activity-card">
+                <div class="activity-card glass-panel">
                   <img src="https://placehold.co/400x280/2D8F6F/FFFFFF?text=MOU" alt="기관 업무협약" loading="lazy">
                   <div class="card-body"><h4>수성구 주민자치센터 MOU 체결</h4><span class="date">2026.02.10</span></div>
                 </div>
-                <div class="activity-card">
+                <div class="activity-card glass-panel">
                   <img src="https://placehold.co/400x280/134A3A/FFFFFF?text=Health+Expo" alt="건강박람회 참가" loading="lazy">
                   <div class="card-body"><h4>2026 대구 건강박람회 참가</h4><span class="date">2026.01.25</span></div>
                 </div>
-                <div class="activity-card">
+                <div class="activity-card glass-panel">
                   <img src="https://placehold.co/400x280/1B5E4B/FFFFFF?text=Senior+Visit" alt="경로당 방문 교육" loading="lazy">
                   <div class="card-body"><h4>경로당 방문 건강교실 운영</h4><span class="date">2026.01.15</span></div>
                 </div>
-                <div class="activity-card">
+                <div class="activity-card glass-panel">
                   <img src="https://placehold.co/400x280/2D8F6F/FFFFFF?text=Sports+Event" alt="체육대회 참가" loading="lazy">
                   <div class="card-body"><h4>전국 생활체육 대회 참가</h4><span class="date">2025.12.20</span></div>
                 </div>
-                <div class="activity-card">
+                <div class="activity-card glass-panel">
                   <img src="https://placehold.co/400x280/134A3A/FFFFFF?text=Workshop" alt="강사 워크숍" loading="lazy">
                   <div class="card-body"><h4>강사 역량강화 워크숍</h4><span class="date">2025.12.05</span></div>
                 </div>
@@ -96,15 +99,15 @@
             <!-- 자격과정 -->
             <div class="tab-panel" id="certificate" role="tabpanel">
               <div class="activity-grid">
-                <div class="activity-card">
+                <div class="activity-card glass-panel">
                   <img src="https://placehold.co/400x280/1B5E4B/FFFFFF?text=Exam" alt="자격시험 현장" loading="lazy">
                   <div class="card-body"><h4>2026년 1차 자격시험 실시</h4><span class="date">2026.02.28</span></div>
                 </div>
-                <div class="activity-card">
+                <div class="activity-card glass-panel">
                   <img src="https://placehold.co/400x280/2D8F6F/FFFFFF?text=Graduation" alt="수료식" loading="lazy">
                   <div class="card-body"><h4>건강운동지도자 과정 수료식</h4><span class="date">2026.02.01</span></div>
                 </div>
-                <div class="activity-card">
+                <div class="activity-card glass-panel">
                   <img src="https://placehold.co/400x280/134A3A/FFFFFF?text=Practical" alt="실기시험" loading="lazy">
                   <div class="card-body"><h4>파크골프지도자 실기시험</h4><span class="date">2026.01.20</span></div>
                 </div>
@@ -114,15 +117,15 @@
             <!-- 특강/건강교실 -->
             <div class="tab-panel" id="class" role="tabpanel">
               <div class="activity-grid">
-                <div class="activity-card">
+                <div class="activity-card glass-panel">
                   <img src="https://placehold.co/400x280/1B5E4B/FFFFFF?text=Lecture" alt="건강 특강" loading="lazy">
                   <div class="card-body"><h4>시니어 건강관리 특강</h4><span class="date">2026.02.25</span></div>
                 </div>
-                <div class="activity-card">
+                <div class="activity-card glass-panel">
                   <img src="https://placehold.co/400x280/2D8F6F/FFFFFF?text=Health+Class" alt="건강교실" loading="lazy">
                   <div class="card-body"><h4>주민자치센터 건강교실</h4><span class="date">2026.02.15</span></div>
                 </div>
-                <div class="activity-card">
+                <div class="activity-card glass-panel">
                   <img src="https://placehold.co/400x280/134A3A/FFFFFF?text=Stacking" alt="스포츠스태킹 교실" loading="lazy">
                   <div class="card-body"><h4>어린이 스포츠스태킹 교실</h4><span class="date">2026.01.30</span></div>
                 </div>

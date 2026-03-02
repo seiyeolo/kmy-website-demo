@@ -9,10 +9,13 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- Canvas for Background Animation -->
+  <canvas id="bg-canvas"></canvas>
+
   <a class="skip-link" href="#main">본문 바로가기</a>
 
   <header class="site-header">
@@ -46,7 +49,7 @@
     <div class="sub-content">
       <div class="container">
         <div class="sub-layout">
-          <aside class="side-nav">
+          <aside class="side-nav glass-panel">
             <h3>사업소개</h3>
             <ul>
               <li><a href="#stacking" class="active">스포츠스태킹협회</a></li>
@@ -57,27 +60,27 @@
           <div class="sub-main">
             <section id="stacking" class="sub-section">
               <h2>(사)대한생활체육회스포츠스태킹협회</h2>
-              <div class="course-detail">
+              <div class="course-detail glass-panel">
                 <h3>스포츠스태킹이란?</h3>
                 <p>스포츠스태킹은 특수 제작된 컵을 정해진 순서대로 쌓고 내리는 스포츠입니다. 손과 눈의 협응력, 집중력, 반사신경을 향상시키며 남녀노소 누구나 즐길 수 있는 생활체육입니다.</p>
               </div>
               <div class="mission-grid" style="margin-top: var(--space-xl);">
-                <div class="mission-card">
+                <div class="mission-card glass-panel">
                   <div class="icon">🏆</div>
                   <h4>대회 운영</h4>
                   <p>전국 스포츠스태킹 대회를 기획하고 운영합니다</p>
                 </div>
-                <div class="mission-card">
+                <div class="mission-card glass-panel">
                   <div class="icon">📚</div>
                   <h4>지도자 양성</h4>
                   <p>전문 스포츠스태킹 지도자를 양성합니다</p>
                 </div>
-                <div class="mission-card">
+                <div class="mission-card glass-panel">
                   <div class="icon">🏫</div>
                   <h4>학교 보급</h4>
                   <p>학교 체육 프로그램으로 스포츠스태킹을 보급합니다</p>
                 </div>
-                <div class="mission-card">
+                <div class="mission-card glass-panel">
                   <div class="icon">🌍</div>
                   <h4>국제 교류</h4>
                   <p>세계스포츠스태킹협회(WSSA)와 교류합니다</p>
@@ -87,27 +90,27 @@
 
             <section id="kmy" class="sub-section">
               <h2>건강증진교육개발 KMY협회</h2>
-              <div class="course-detail">
+              <div class="course-detail glass-panel">
                 <h3>KMY협회 주요 사업</h3>
                 <p>건강증진교육개발 KMY협회는 웰니스 전문가 양성, 강사파견, 건강교육 프로그램 개발 등 다양한 사업을 운영하고 있습니다.</p>
               </div>
               <div class="mission-grid" style="margin-top: var(--space-xl);">
-                <div class="mission-card">
+                <div class="mission-card glass-panel">
                   <div class="icon">🎓</div>
                   <h4>전문가 양성</h4>
                   <p>건강운동지도자, 파크골프지도자 등 전문가를 양성합니다</p>
                 </div>
-                <div class="mission-card">
+                <div class="mission-card glass-panel">
                   <div class="icon">👥</div>
                   <h4>강사 파견</h4>
                   <p>기관·시설에 전문 강사를 파견합니다</p>
                 </div>
-                <div class="mission-card">
+                <div class="mission-card glass-panel">
                   <div class="icon">📋</div>
                   <h4>프로그램 개발</h4>
                   <p>맞춤형 건강교육 프로그램을 개발·운영합니다</p>
                 </div>
-                <div class="mission-card">
+                <div class="mission-card glass-panel">
                   <div class="icon">🤝</div>
                   <h4>지역 협력</h4>
                   <p>지역사회 기관과 협력하여 건강 증진에 기여합니다</p>

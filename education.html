@@ -9,10 +9,13 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- Canvas for Background Animation -->
+  <canvas id="bg-canvas"></canvas>
+
   <a class="skip-link" href="#main">본문 바로가기</a>
 
   <header class="site-header">
@@ -46,7 +49,7 @@
     <div class="sub-content">
       <div class="container">
         <div class="sub-layout">
-          <aside class="side-nav">
+          <aside class="side-nav glass-panel">
             <h3>교육과정안내</h3>
             <ul>
               <li><a href="#courses" class="active">교육과정</a></li>
@@ -67,7 +70,7 @@
               </div>
 
               <div class="tab-panel active" id="health" role="tabpanel">
-                <div class="course-detail">
+                <div class="course-detail glass-panel">
                   <h3>건강운동지도자 과정</h3>
                   <div class="course-meta">
                     <div class="course-meta-item"><span class="label">대상</span><span class="value">건강운동에 관심 있는 누구나</span></div>
@@ -80,7 +83,7 @@
               </div>
 
               <div class="tab-panel" id="parkgolf" role="tabpanel">
-                <div class="course-detail">
+                <div class="course-detail glass-panel">
                   <h3>파크골프지도자 과정</h3>
                   <div class="course-meta">
                     <div class="course-meta-item"><span class="label">대상</span><span class="value">파크골프 지도에 관심 있는 분</span></div>
@@ -93,7 +96,7 @@
               </div>
 
               <div class="tab-panel" id="stacking" role="tabpanel">
-                <div class="course-detail">
+                <div class="course-detail glass-panel">
                   <h3>스포츠스태킹지도자 과정</h3>
                   <div class="course-meta">
                     <div class="course-meta-item"><span class="label">대상</span><span class="value">스포츠스태킹에 관심 있는 분</span></div>
@@ -106,7 +109,7 @@
               </div>
 
               <div class="tab-panel" id="silver" role="tabpanel">
-                <div class="course-detail">
+                <div class="course-detail glass-panel">
                   <h3>실버건강운동지도 과정</h3>
                   <div class="course-meta">
                     <div class="course-meta-item"><span class="label">대상</span><span class="value">고령자 운동 지도에 관심 있는 분</span></div>
@@ -122,7 +125,7 @@
             <!-- 교육신청 -->
             <section id="apply" class="sub-section">
               <h2>교육신청</h2>
-              <form class="apply-form" id="applyForm">
+              <form class="apply-form glass-panel" id="applyForm">
                 <div class="form-row">
                   <div class="form-group">
                     <label for="applyName">이름 *</label>
@@ -170,25 +173,25 @@
             <section id="review" class="sub-section">
               <h2>수강 후기</h2>
               <div class="review-grid">
-                <div class="review-card">
+                <div class="review-card glass-panel">
                   <div class="course-name">건강운동지도자 과정</div>
                   <div class="stars">★★★★★</div>
                   <p class="review-text">은퇴 후 새로운 도전이었는데, 체계적인 교육 덕분에 자신감을 얻었습니다. 현재 주민자치센터에서 강사로 활동 중입니다.</p>
                   <div class="reviewer">- 김○순 (62세, 2025년 수료)</div>
                 </div>
-                <div class="review-card">
+                <div class="review-card glass-panel">
                   <div class="course-name">파크골프지도자 과정</div>
                   <div class="stars">★★★★★</div>
                   <p class="review-text">파크골프를 취미로 즐기다가 지도자 자격을 취득했습니다. 이론과 실기를 균형 있게 배울 수 있어 좋았습니다.</p>
                   <div class="reviewer">- 박○호 (58세, 2025년 수료)</div>
                 </div>
-                <div class="review-card">
+                <div class="review-card glass-panel">
                   <div class="course-name">스포츠스태킹지도자 과정</div>
                   <div class="stars">★★★★☆</div>
                   <p class="review-text">아이들과 어르신 모두 즐길 수 있는 스포츠스태킹, 지도법을 배우니 활용 범위가 넓어졌습니다.</p>
                   <div class="reviewer">- 이○미 (45세, 2026년 수료)</div>
                 </div>
-                <div class="review-card">
+                <div class="review-card glass-panel">
                   <div class="course-name">실버건강운동지도 과정</div>
                   <div class="stars">★★★★★</div>
                   <p class="review-text">요양원에서 근무하며 어르신들의 건강 관리에 큰 도움이 되고 있습니다. 실무 중심의 교육이 매우 유익했습니다.</p>
