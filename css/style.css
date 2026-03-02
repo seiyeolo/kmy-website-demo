@@ -54,8 +54,8 @@ address {
   /* ── ds-portfolio & KMY 다크 테마 커스텀 컬러 ── */
   --bg-dark: #0a0b10;
   --bg-darker: #050508;
-  --accent-cyan: #00f0ff;
-  --accent-purple: #8a2be2;
+  --accent-cyan: #2d8f6f;
+  --accent-purple: #e8a838;
   --text-main: #e2e8f0;
   --text-muted: #94a3b8;
 
@@ -64,7 +64,7 @@ address {
   --color-primary-light: var(--accent-cyan);
   --color-primary-dark: var(--accent-purple);
   --color-accent: var(--accent-purple);
-  --color-accent-hover: #b45ce8;
+  --color-accent-hover: #D4952E;
   
   /* 기존 변수들을 덮어씌움 (호환성 유지) */
   --color-dark: var(--bg-dark);
