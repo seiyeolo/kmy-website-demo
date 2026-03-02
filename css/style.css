@@ -384,23 +384,35 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  flex-shrink: 0;
+  flex-shrink: 1;
+  max-width: 80%;
 }
 
 .logo-icon {
-  font-size: 2rem;
+  height: 48px;
+  width: auto;
+  object-fit: contain;
 }
 
 .logo-text {
   font-weight: 800;
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   line-height: var(--leading-tight);
+  color: #ffffff;
+  margin-left: 8px;
   white-space: normal;
   word-break: keep-all;
 }
 
+@media (min-width: 768px) {
+  .logo-text {
+    font-size: var(--text-lg);
+    white-space: nowrap;
+  }
+}
+
 .logo-text strong {
-  font-size: var(--text-md);
+  font-size: var(--text-xl);
   color: var(--color-primary);
 }
 
