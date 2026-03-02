@@ -392,14 +392,15 @@ textarea:focus-visible {
 }
 
 .logo-text {
-  font-family: var(--font-heading);
-  font-size: var(--text-sm);
-  color: var(--color-dark);
-  line-height: 1.3;
+  font-weight: 800;
+  font-size: var(--text-base);
+  line-height: var(--leading-tight);
+  white-space: normal;
+  word-break: keep-all;
 }
 
 .logo-text strong {
-  font-size: var(--text-lg);
+  font-size: var(--text-md);
   color: var(--color-primary);
 }
 
