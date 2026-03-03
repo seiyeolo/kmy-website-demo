@@ -4,13 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>교육과정안내 |  한국건강증진스포츠지도사협회</title>
-  <meta name="description" content="건강운동지도자, 파크골프지도자, 스포츠스태킹지도자, 실버건강운동지도 과정을 안내합니다.">
+  <meta name="description" content="건강운동지도자, 파크골프지도자, 실버건강운동지도 과정을 안내합니다.">
   <meta property="og:title" content="교육과정안내 |  한국건강증진스포츠지도사협회">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Clerk Auth Script -->
+  <script
+    async
+    crossorigin="anonymous"
+    data-clerk-publishable-key="pk_test_Y2xlcmsua215LndlYnNpdGUuY2xlcmsuYWNjb3VudHMuZGV2JA"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@4/dist/clerk.browser.js"
+    type="text/javascript"
+  ></script>
 </head>
 <body>
   <!-- Canvas for Background Animation -->
@@ -31,6 +40,10 @@
           <li class="nav-item has-dropdown"><a href="contact.html" class="nav-link" aria-haspopup="true">고객센터</a><ul class="dropdown"><li><a href="contact.html#notice">공지사항</a></li><li><a href="contact.html#faq">자주 묻는 질문</a></li><li><a href="contact.html#inquiry">문의하기</a></li></ul></li>
         </ul>
       </nav>
+
+      <!-- Auth Container (Clerk) -->
+      <div id="auth-container" style="display: flex; align-items: center; gap: var(--space-sm); margin-left: auto; margin-right: var(--space-md);"></div>
+
       <a href="tel:010-6565-9996" class="header-phone" aria-label="전화 문의">📞 <span>010-6565-9996</span></a>
       <button class="hamburger" id="hamburgerBtn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mainNav"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
     </div>
@@ -53,19 +66,81 @@
             <h3>교육과정안내</h3>
             <ul>
               <li><a href="#courses" class="active">교육과정</a></li>
+              <li><a href="#certifications">민간자격등록 현황</a></li>
               <li><a href="#apply">교육신청</a></li>
               <li><a href="#review">수강 후기</a></li>
             </ul>
           </aside>
 
           <div class="sub-main">
+
+            <!-- ★ 합격률 90% 하이라이트 배너 (전단지 1번 내용) -->
+            <section class="sub-section fade-in-up" style="margin-bottom: var(--space-2xl);">
+              <div class="glass-panel" style="text-align: center; padding: var(--space-2xl) var(--space-xl); border-top: 3px solid var(--color-primary); position: relative; overflow: hidden;">
+                <!-- 배경 장식 -->
+                <div style="position: absolute; top: -40px; right: -40px; width: 150px; height: 150px; border-radius: 50%; background: rgba(27, 94, 75, 0.15); filter: blur(40px);"></div>
+                <div style="position: absolute; bottom: -30px; left: -30px; width: 120px; height: 120px; border-radius: 50%; background: rgba(212, 175, 55, 0.1); filter: blur(30px);"></div>
+
+                <p style="color: var(--color-primary); font-weight: 600; font-size: var(--text-sm); letter-spacing: 3px; text-transform: uppercase; margin-bottom: var(--space-sm);">스포츠지도사 분야 국가자격증 취득</p>
+                <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: var(--space-md); color: #fff;">합격률 평균 <span style="color: var(--color-primary); font-size: 1.2em;">90%</span></h2>
+                <p style="font-size: var(--text-lg); color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: var(--space-xl);">
+                  <strong style="color: #fff;">한국건강증진스포츠지도사협회</strong>에서<br>
+                  모든 <span style="color: var(--color-primary); font-weight: 700;">노하우</span>를 전수합니다.
+                </p>
+
+                <!-- 5가지 사업 영역 뱃지 -->
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); margin-top: var(--space-lg);">
+                  <span style="background: rgba(27, 94, 75, 0.2); border: 1px solid rgba(27, 94, 75, 0.4); color: rgba(255,255,255,0.9); padding: 8px 16px; border-radius: 20px; font-size: var(--text-sm); font-weight: 500;">🎓 국가스포츠지도사 취득 전문 교육</span>
+                  <span style="background: rgba(27, 94, 75, 0.2); border: 1px solid rgba(27, 94, 75, 0.4); color: rgba(255,255,255,0.9); padding: 8px 16px; border-radius: 20px; font-size: var(--text-sm); font-weight: 500;">🤝 세대 화합 맞춤 건강프로그램</span>
+                  <span style="background: rgba(27, 94, 75, 0.2); border: 1px solid rgba(27, 94, 75, 0.4); color: rgba(255,255,255,0.9); padding: 8px 16px; border-radius: 20px; font-size: var(--text-sm); font-weight: 500;">💚 건강회복 맞춤 건강프로그램</span>
+                  <span style="background: rgba(27, 94, 75, 0.2); border: 1px solid rgba(27, 94, 75, 0.4); color: rgba(255,255,255,0.9); padding: 8px 16px; border-radius: 20px; font-size: var(--text-sm); font-weight: 500;">🏃 FUN한 신체활동과 건강관리 맞춤사업</span>
+                  <span style="background: rgba(27, 94, 75, 0.2); border: 1px solid rgba(27, 94, 75, 0.4); color: rgba(255,255,255,0.9); padding: 8px 16px; border-radius: 20px; font-size: var(--text-sm); font-weight: 500;">🧠 FUN한 인지활동 건강맞춤사업</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- ★ 협회 차별화 3가지 (전단지 2번 내용) -->
+            <section class="sub-section fade-in-up" style="margin-bottom: var(--space-2xl);">
+              <div style="text-align: center; margin-bottom: var(--space-xl);">
+                <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); color: #fff;">한국건강증진스포츠지도사협회만의 <span class="gradient-text">차별화!</span></h2>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-lg);">
+                <!-- 합격보장 -->
+                <div class="glass-panel" style="padding: var(--space-xl); border-top: 3px solid var(--color-primary); text-align: center; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 40px rgba(27,94,75,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--glass-shadow)'">
+                  <div style="width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--color-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-md) auto;">
+                    <span style="font-size: 1.4rem;">✅</span>
+                  </div>
+                  <h3 style="color: var(--color-primary); font-size: var(--text-lg); margin-bottom: var(--space-sm);">합격보장</h3>
+                  <p style="color: rgba(255,255,255,0.7); font-size: var(--text-sm); line-height: 1.6; margin-bottom: var(--space-md);">국가자격 취득 시험 90%이상 합격의 비밀</p>
+                  <p style="color: #fff; font-weight: 700; font-size: var(--text-base);">맞춤 전략 제공</p>
+                </div>
+                <!-- 책임 -->
+                <div class="glass-panel" style="padding: var(--space-xl); border-top: 3px solid #d4af37; text-align: center; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 40px rgba(212,175,55,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--glass-shadow)'">
+                  <div style="width: 56px; height: 56px; border-radius: 50%; border: 2px solid #d4af37; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-md) auto;">
+                    <span style="font-size: 1.4rem;">🤝</span>
+                  </div>
+                  <h3 style="color: #d4af37; font-size: var(--text-lg); margin-bottom: var(--space-sm);">책 임</h3>
+                  <p style="color: rgba(255,255,255,0.7); font-size: var(--text-sm); line-height: 1.6; margin-bottom: var(--space-md);">한번 등록으로 <strong style="color:#fff;">합격</strong> 시까지 책임을 다하여</p>
+                  <p style="color: #fff; font-weight: 700; font-size: var(--text-base);">국가자격 보유 지원</p>
+                </div>
+                <!-- 전문화 -->
+                <div class="glass-panel" style="padding: var(--space-xl); border-top: 3px solid #7ecfb3; text-align: center; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 40px rgba(126,207,179,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--glass-shadow)'">
+                  <div style="width: 56px; height: 56px; border-radius: 50%; border: 2px solid #7ecfb3; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-md) auto;">
+                    <span style="font-size: 1.4rem;">🎯</span>
+                  </div>
+                  <h3 style="color: #7ecfb3; font-size: var(--text-lg); margin-bottom: var(--space-sm);">전문화</h3>
+                  <p style="color: rgba(255,255,255,0.7); font-size: var(--text-sm); line-height: 1.6; margin-bottom: var(--space-md);">강사의 <strong style="color:#fff;">역량강화</strong>와 강사로 활동 지원으로</p>
+                  <p style="color: #fff; font-weight: 700; font-size: var(--text-base);">사회 활동 지원</p>
+                </div>
+              </div>
+            </section>
+
             <!-- 교육과정 -->
             <section id="courses" class="sub-section">
               <h2>교육과정</h2>
               <div class="tab-nav" role="tablist">
                 <button class="tab-btn active" role="tab" aria-selected="true" data-tab="health">건강운동지도자</button>
                 <button class="tab-btn" role="tab" aria-selected="false" data-tab="parkgolf">파크골프지도자</button>
-                <button class="tab-btn" role="tab" aria-selected="false" data-tab="stacking">스포츠스태킹지도자</button>
                 <button class="tab-btn" role="tab" aria-selected="false" data-tab="silver">실버건강운동지도</button>
               </div>
 
@@ -95,19 +170,6 @@
                 </div>
               </div>
 
-              <div class="tab-panel" id="stacking" role="tabpanel">
-                <div class="course-detail glass-panel">
-                  <h3>스포츠스태킹지도자 과정</h3>
-                  <div class="course-meta">
-                    <div class="course-meta-item"><span class="label">대상</span><span class="value">스포츠스태킹에 관심 있는 분</span></div>
-                    <div class="course-meta-item"><span class="label">기간</span><span class="value">총 6주 (주 1회, 2시간)</span></div>
-                    <div class="course-meta-item"><span class="label">자격증</span><span class="value">스포츠스태킹지도자 자격증</span></div>
-                    <div class="course-meta-item"><span class="label">수강료</span><span class="value">별도 문의</span></div>
-                  </div>
-                  <p>스포츠스태킹 기술과 지도법을 체계적으로 배울 수 있는 전문 지도자 양성과정입니다.</p>
-                </div>
-              </div>
-
               <div class="tab-panel" id="silver" role="tabpanel">
                 <div class="course-detail glass-panel">
                   <h3>실버건강운동지도 과정</h3>
@@ -122,6 +184,128 @@
               </div>
             </section>
 
+            <!-- 민간자격등록 현황 -->
+            <section id="certifications" class="sub-section fade-in-up">
+              <h2>한국건강증진스포츠지도사협회 민간자격등록 현황</h2>
+              <p style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-lg);">자격기본법에 따른 민간자격정보서비스 등록을 마친 검증된 자격증</p>
+              
+              <div class="table-container glass-panel" style="overflow-x: auto; padding: 0;">
+                <table class="kmy-table" style="width: 100%; border-collapse: collapse; text-align: left;">
+                  <thead>
+                    <tr style="background: rgba(27, 94, 75, 0.4); border-bottom: 2px solid var(--color-primary);">
+                      <th style="padding: var(--space-md); color: #fff; text-align: center; white-space: nowrap;">교육이수 조건(일수)</th>
+                      <th style="padding: var(--space-md); color: #fff; text-align: center; white-space: nowrap;">자격명</th>
+                      <th style="padding: var(--space-md); color: #fff;">내용</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">1일~3일<br><span style="font-size: 12px; color: var(--color-primary);">(1DAY가능)</span></td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">인지활동 지도사</td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">노인들의 신체활동 및 놀이 활동에 도움이 되는 맞춤형 도구를 이용하여 노인들의 신체적, 정서적, 사회적으로 안정감을 가질 수 있게 지도하는 업무 수행</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">1일~3일<br><span style="font-size: 12px; color: var(--color-primary);">(1DAY가능)</span></td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">걷기지도사</td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">걷기의 기본 자세, 올바른 걷기 습관, 스트레칭, 걷기 속도 및 거리 등을 포함한 맞춤형 프로그램을 개발하며 지도하는 업무 수행</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">1일~3일<br><span style="font-size: 12px; color: var(--color-primary);">(1DAY가능)</span></td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">스모비운동<br>지도사</td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">근육의 수축과 이완을 돕은 운동기구인 스모비를 활용하여 남녀노소 누구에게나 스모비를 활용하여 프로그램 및 활동을 지도하는 업무 수행</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">3일~5일</td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">파크골프 지도사</td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">파크골프에 대한 전문적인 지식으로 경기규칙, 스윙, 샷, 퍼팅 등 다양한 기술을 활용하여 파크골프를 지도하는 전문 강사</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">1일~3일<br><span style="font-size: 12px; color: var(--color-primary);">(1DAY가능)</span></td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">라인댄스 지도사</td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">리듬, 카운트 등을 활용하여 댄스 안무를 창작 및 수정 보완할 수 있으며, 라인댄스 안무를 연출하고 수강자의 신체수준에 맞추어 지도하는 직무 수행</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">1일~3일<br><span style="font-size: 12px; color: var(--color-primary);">(1DAY가능)</span></td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">생활지원사</td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">일상생활 영위가 어려운 취약 노인에게 돌봄을 제공하여 안정적인 노후생활을 위하여 일상 생활로 사회참여, 안전지원, 생활교육 등 지원서비스를 제공하는 직무 수행</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">1일~3일<br><span style="font-size: 12px; color: var(--color-primary);">(1DAY가능)</span></td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">원예심리 상담사</td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">꽃과 식물을 이용한 원예활동을 매개로하여 원예활동 심리상담 프로그램을 지도하는 직무 수행</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">1일~3일<br><span style="font-size: 12px; color: var(--color-primary);">(1DAY가능)</span></td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">실버운동 지도사</td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">노인의 신체적 특징에 맞는 스트레칭, 실버체조 프로그램을 지도하는 직무 수행</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">3일~5일</td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">싱잉볼<br>명상지도사</td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">싱잉볼을 활용하여 다양한 명상기법(호흡방법, 명상동작)을 지도하며, 명상 전문가를 양성하는 직무 수행</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">1일~3일<br><span style="font-size: 12px; color: var(--color-primary);">(1DAY가능)</span></td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">타악기 지도사</td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">타악기에 대한 전문적인 지식과 다양한 타악기 연구능력을 바탕으로 타악기에 대한 이론과 타악기 특유의 다양한 리듬이론과 연주 스킬 등을 지도하는 직무 수행</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">1일~3일<br><span style="font-size: 12px; color: var(--color-primary);">(1DAY가능)</span></td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">실버댄스 지도사</td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">실버댄스의 특징과 차이점을 지도하고 프로그램에 대한 연구와 개발, 현장에서 지도하는 직무 수행</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">1일~3일<br><span style="font-size: 12px; color: var(--color-primary);">(1DAY가능)</span></td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">훌라댄스 지도사</td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">훌라댄스의 주요 동작 습득, 주요동작을 바탕으로 한 훌라댄스 안무 창작법, 훌라댄스 지도법 등을 익히고 다양한 사람들을 대상으로 올바르게 지도하는 직무 수행</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">3일~5일</td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">시니어모델 지도사</td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">시니어 모델에 필요한 워킹 및 포즈, 자신감에 대한 교육의 업무를 수행하고 시니어의 사회활동에 자신감을 가질 수 있도록 지도하는 직무를 수행</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">3일~5일</td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">퍼실리테이터<br>(1,2급)</td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">(1급) 회의, 워크숍, 심포지엄이나 교육프로그램 수행과정에서 원활한 진행과 협의 형성과정, 문제해결을 촉진하는데 대한 전문지식과 경험을 토대로 프로그램 기획, 개발, 전문 진행자로서 직무 수행<br>(2급) 회의, 워크숍 등에서 원활한 진행과 문제해결을 돕는 초급 진행 촉진자로서 직무 수행</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">1일~3일<br><span style="font-size: 12px; color: var(--color-primary);">(1DAY가능)</span></td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">스마트폰활용<br>지도사</td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">SNS를 활용한 마케팅 기법 등 효율적인 업무를 할 수 있는 노하우를 교육하고, 스마트폰의 이론과 실습에 의한 실무프로그램을 개발 및 운영할 수 있는 전문 인력을 양성할 수 있는 직무 수행</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">1일~3일<br><span style="font-size: 12px; color: var(--color-primary);">(1DAY가능)</span></td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">건강체조 지도사</td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">건강 체조와 관련된 이론과 프로그램의 이해와 응용을 통해 다양한 사람들을 대상으로 건강 체조를 지도하는 직무 수행</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">1일~3일<br><span style="font-size: 12px; color: var(--color-primary);">(1DAY가능)</span></td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">컵타지도사</td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">음악에 맞추어 컵으로 몸과 책상을 이용한 움직임으로 좌뇌와 우뇌를 자극하여 지성과 감성이 함께 발달하도록 하여 인지 활동을 돕는 직무 수행</td>
+                    </tr>
+
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">5일~7일</td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">요가지도사</td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">요가테라피의 이해와 개념을 지도하고 요가의 기본동작 및 응용동작을 활용한 건강증진의 목적으로 요가를 지도할 수 있는 직무 수행</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">1일~3일<br><span style="font-size: 12px; color: var(--color-primary);">(1DAY가능)</span></td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">AI활용지도사</td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">AI의 기본개념과 프롬프트, 엔지니어링, 구글AI스튜디오 등을 교육 지도하는 전문가로 AI를 일상 업무에 활용할 수 있도록 지도하는 직무수행</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.8); text-align: center; white-space: nowrap;">1일~3일</td>
+                      <td style="padding: var(--space-md); color: #fff; font-weight: 600; text-align: center; white-space: nowrap;">스포츠시설<br>안전지도사<br><span style="font-size: 12px; color: #ffcc00;">(신청중)</span></td>
+                      <td style="padding: var(--space-md); color: rgba(255,255,255,0.7); line-height: 1.6;">스포츠 현장에서 시설의 안전을 체계적으로 관리하고 사고예방 및 응급처치 등 안전관리 전반을 담당하는 등 직무 수행</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p style="color: rgba(255,255,255,0.6); font-size: 14px; margin-top: var(--space-md); text-align: center;">※ 시대(사회)가 빠르게 변화됨에 따라 협회는 수요층의 변화에 빠르게 대비하여 사회에서 요구되는 자격과정과 프로그램을 개발하고 있습니다.</p>
+            </section>
+            
             <!-- 교육신청 -->
             <section id="apply" class="sub-section">
               <h2>교육신청</h2>
@@ -147,7 +331,6 @@
                       <option value="">과정을 선택하세요</option>
                       <option value="건강운동지도자">건강운동지도자 과정</option>
                       <option value="파크골프지도자">파크골프지도자 과정</option>
-                      <option value="스포츠스태킹지도자">스포츠스태킹지도자 과정</option>
                       <option value="실버건강운동지도">실버건강운동지도 과정</option>
                     </select>
                   </div>
@@ -207,12 +390,6 @@
                   <div class="reviewer">- 박○호 (58세, 2025년 수료)</div>
                 </div>
                 <div class="review-card glass-panel">
-                  <div class="course-name">스포츠스태킹지도자 과정</div>
-                  <div class="stars">★★★★☆</div>
-                  <p class="review-text">아이들과 어르신 모두 즐길 수 있는 스포츠스태킹, 지도법을 배우니 활용 범위가 넓어졌습니다.</p>
-                  <div class="reviewer">- 이○미 (45세, 2026년 수료)</div>
-                </div>
-                <div class="review-card glass-panel">
                   <div class="course-name">실버건강운동지도 과정</div>
                   <div class="stars">★★★★★</div>
                   <p class="review-text">요양원에서 근무하며 어르신들의 건강 관리에 큰 도움이 되고 있습니다. 실무 중심의 교육이 매우 유익했습니다.</p>
@@ -246,5 +423,25 @@
   <button class="scroll-top" aria-label="맨 위로">↑</button>
   <div class="mobile-phone-bar"><a href="tel:010-6565-9996">📞 전화 문의: 010-6565-9996</a></div>
   <script src="js/main.js"></script>
+
+  <!-- Clerk Initialization Script -->
+  <script>
+    window.addEventListener('load', async function () {
+      if (window.Clerk) {
+        await window.Clerk.load();
+        const authContainer = document.getElementById('auth-container');
+        if (window.Clerk.user) {
+          window.Clerk.mountUserButton(authContainer);
+        } else {
+          const signInBtn = document.createElement('button');
+          signInBtn.textContent = '로그인';
+          signInBtn.className = 'btn btn-primary btn-sm';
+          signInBtn.style.padding = '0.5rem 1rem';
+          signInBtn.onclick = () => window.Clerk.openSignIn();
+          authContainer.appendChild(signInBtn);
+        }
+      }
+    });
+  </script>
 </body>
 </html>

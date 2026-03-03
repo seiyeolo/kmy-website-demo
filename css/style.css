@@ -1308,7 +1308,22 @@ textarea:focus-visible {
   font-size: var(--text-base);
 }
 
-/* 햄버거 활성화 상태 */
+/* ── 헤더 로그인/가입 (Clerk) ── */
+#auth-container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-left: auto;
+  margin-right: var(--space-md);
+}
+
+#auth-container button.cl-userButtonTrigger {
+  /* Clerk 프로필 버튼의 사이즈/여백 미세조정이 필요할 경우 */
+  width: 36px;
+  height: 36px;
+}
+
+/* ===== 모바일 햄버거 메뉴 ===== */
 .hamburger.active {
   position: fixed;
   top: 12px;
@@ -1748,8 +1763,8 @@ body {
 }
 
 .course-meta-item .label {
-  font-weight: 500;
-  color: var(--color-dark);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
   min-width: 80px;
   flex-shrink: 0;
 }

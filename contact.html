@@ -11,6 +11,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Clerk Auth Script -->
+  <script
+    async
+    crossorigin="anonymous"
+    data-clerk-publishable-key="pk_test_Y2xlcmsua215LndlYnNpdGUuY2xlcmsuYWNjb3VudHMuZGV2JA"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@4/dist/clerk.browser.js"
+    type="text/javascript"
+  ></script>
 </head>
 <body>
   <!-- Canvas for Background Animation -->
@@ -31,6 +40,10 @@
           <li class="nav-item has-dropdown"><a href="contact.html" class="nav-link" aria-haspopup="true">고객센터</a><ul class="dropdown"><li><a href="contact.html#notice">공지사항</a></li><li><a href="contact.html#faq">자주 묻는 질문</a></li><li><a href="contact.html#inquiry">문의하기</a></li></ul></li>
         </ul>
       </nav>
+
+      <!-- Auth Container (Clerk) -->
+      <div id="auth-container" style="display: flex; align-items: center; gap: var(--space-sm); margin-left: auto; margin-right: var(--space-md);"></div>
+
       <a href="tel:010-6565-9996" class="header-phone" aria-label="전화 문의">📞 <span>010-6565-9996</span></a>
       <button class="hamburger" id="hamburgerBtn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mainNav"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
     </div>
@@ -71,7 +84,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="notice-row" data-content="2026년 상반기 교육과정 일정이 확정되었습니다. 건강운동지도자 과정(4월), 파크골프지도자 과정(5월), 스포츠스태킹지도자 과정(6월)이 개설됩니다. 자세한 일정은 교육과정 페이지를 참고해주세요.">
+                  <tr class="notice-row" data-content="2026년 상반기 교육과정 일정이 확정되었습니다. 건강운동지도자 과정(4월), 파크골프지도자 과정(5월), 실버건강운동지도 과정(6월)이 개설됩니다. 자세한 일정은 교육과정 페이지를 참고해주세요.">
                     <td class="num">8</td>
                     <td class="title-col" role="button" tabindex="0" aria-expanded="false">2026년 상반기 교육과정 안내</td>
                     <td class="date-col">2026.03.01</td>
@@ -129,7 +142,7 @@
                 </div>
                 <div class="faq-item glass-panel">
                   <button class="faq-question" aria-expanded="false">Q. 자격증은 어떤 것을 취득할 수 있나요?<span class="arrow">▼</span></button>
-                  <div class="faq-answer"><div class="faq-answer-inner">건강운동지도자, 파크골프지도자, 스포츠스태킹지도자, 실버건강운동지도사 등 민간자격증을 취득하실 수 있습니다. 각 과정별 수료 후 자격시험에 합격하시면 발급됩니다.</div></div>
+                  <div class="faq-answer"><div class="faq-answer-inner">건강운동지도자, 파크골프지도자, 실버건강운동지도사 등 민간자격증을 취득하실 수 있습니다. 각 과정별 수료 후 자격시험에 합격하시면 발급됩니다.</div></div>
                 </div>
                 <div class="faq-item glass-panel">
                   <button class="faq-question" aria-expanded="false">Q. 교육 시간은 어떻게 되나요?<span class="arrow">▼</span></button>
@@ -244,5 +257,25 @@
   <button class="scroll-top" aria-label="맨 위로">↑</button>
   <div class="mobile-phone-bar"><a href="tel:010-6565-9996">📞 전화 문의: 010-6565-9996</a></div>
   <script src="js/main.js"></script>
+
+  <!-- Clerk Initialization Script -->
+  <script>
+    window.addEventListener('load', async function () {
+      if (window.Clerk) {
+        await window.Clerk.load();
+        const authContainer = document.getElementById('auth-container');
+        if (window.Clerk.user) {
+          window.Clerk.mountUserButton(authContainer);
+        } else {
+          const signInBtn = document.createElement('button');
+          signInBtn.textContent = '로그인';
+          signInBtn.className = 'btn btn-primary btn-sm';
+          signInBtn.style.padding = '0.5rem 1rem';
+          signInBtn.onclick = () => window.Clerk.openSignIn();
+          authContainer.appendChild(signInBtn);
+        }
+      }
+    });
+  </script>
 </body>
 </html>

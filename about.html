@@ -12,6 +12,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Clerk Auth Script -->
+  <script
+    async
+    crossorigin="anonymous"
+    data-clerk-publishable-key="pk_test_Y2xlcmsua215LndlYnNpdGUuY2xlcmsuYWNjb3VudHMuZGV2JA"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@4/dist/clerk.browser.js"
+    type="text/javascript"
+  ></script>
 </head>
 <body>
   <!-- Canvas for Background Animation -->
@@ -75,6 +84,10 @@
           </li>
         </ul>
       </nav>
+
+      <!-- Auth Container (Clerk) -->
+      <div id="auth-container" style="display: flex; align-items: center; gap: var(--space-sm); margin-left: auto; margin-right: var(--space-md);"></div>
+
       <a href="tel:010-6565-9996" class="header-phone" aria-label="전화 문의">📞 <span>010-6565-9996</span></a>
       <button class="hamburger" id="hamburgerBtn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mainNav">
         <span class="hamburger-line"></span>
@@ -264,5 +277,25 @@
   <button class="scroll-top" aria-label="맨 위로">↑</button>
   <div class="mobile-phone-bar"><a href="tel:010-6565-9996">📞 전화 문의: 010-6565-9996</a></div>
   <script src="js/main.js"></script>
+
+  <!-- Clerk Initialization Script -->
+  <script>
+    window.addEventListener('load', async function () {
+      if (window.Clerk) {
+        await window.Clerk.load();
+        const authContainer = document.getElementById('auth-container');
+        if (window.Clerk.user) {
+          window.Clerk.mountUserButton(authContainer);
+        } else {
+          const signInBtn = document.createElement('button');
+          signInBtn.textContent = '로그인';
+          signInBtn.className = 'btn btn-primary btn-sm';
+          signInBtn.style.padding = '0.5rem 1rem';
+          signInBtn.onclick = () => window.Clerk.openSignIn();
+          authContainer.appendChild(signInBtn);
+        }
+      }
+    });
+  </script>
 </body>
 </html>
