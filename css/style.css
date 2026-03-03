@@ -2078,9 +2078,9 @@ body {
   padding: var(--space-lg);
   font-size: var(--text-base);
   font-weight: 500;
-  color: var(--color-dark);
+  color: rgba(255, 255, 255, 0.9);
   text-align: left;
-  background: var(--color-bg);
+  background: transparent;
   cursor: pointer;
   transition: var(--transition);
   min-height: 48px;
