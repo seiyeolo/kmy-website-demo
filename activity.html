@@ -179,7 +179,7 @@
         });
         // 탭 패널 표시/숨김
         document.querySelectorAll('.tab-panel').forEach(function (panel) {
-          panel.hidden = panel.id !== tabId;
+          panel.classList.toggle('active', panel.id === tabId);
         });
         // 사이드 네비 활성화
         document.querySelectorAll('.side-nav a').forEach(function (link) {
