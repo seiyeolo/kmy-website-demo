@@ -165,8 +165,29 @@
                   <label for="applyMessage">기타 문의사항</label>
                   <textarea id="applyMessage" name="message" rows="4" placeholder="문의하실 내용을 입력하세요"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">교육 신청하기</button>
+                <div class="form-actions" style="display: flex; gap: var(--space-md); margin-top: var(--space-lg);">
+                  <button type="submit" class="btn btn-primary" style="flex: 1;">교육 신청하기</button>
+                  <button type="button" class="btn btn-outline" id="startExamBtn" style="flex: 1; border: 1px solid var(--color-primary); color: var(--color-primary); background: transparent;">AI 온라인 시험 응시</button>
+                </div>
               </form>
+
+              <!-- AI 온라인 시험 전용 UI (기본 숨김) -->
+              <div id="aiExamSection" class="glass-panel" style="display: none; margin-top: var(--space-2xl); padding: var(--space-xl);">
+                <h3 style="color: var(--color-primary); margin-bottom: var(--space-md);">AI 기반 맞춤형 사전 테스트</h3>
+                <p style="margin-bottom: var(--space-lg); color: rgba(255,255,255,0.8);">지원자의 기본 역량을 확인하기 위한 간단한 온라인 시험입니다.</p>
+                <div class="exam-content" style="background: rgba(0,0,0,0.3); padding: var(--space-lg); border-radius: var(--radius-md);">
+                  <div class="question" style="margin-bottom: var(--space-md);">
+                    <strong>Q1. 건강운동 시 부상 예방을 위해 가장 먼저 해야 할 일은?</strong>
+                    <div class="options" style="margin-top: var(--space-sm); display: flex; flex-direction: column; gap: 8px;">
+                      <label><input type="radio" name="q1" value="1"> 1. 강도 높은 근력 운동</label>
+                      <label><input type="radio" name="q1" value="2"> 2. 충분한 준비 운동과 스트레칭</label>
+                      <label><input type="radio" name="q1" value="3"> 3. 단백질 섭취</label>
+                      <label><input type="radio" name="q1" value="4"> 4. 충분한 수면</label>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="submitExamBtn">시험 답안 제출</button>
+                </div>
+              </div>
             </section>
 
             <!-- 수강 후기 -->

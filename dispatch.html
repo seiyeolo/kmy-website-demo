@@ -160,6 +160,37 @@
                 <button type="submit" class="btn btn-primary">파견 신청하기</button>
               </form>
             </section>
+
+            <!-- AI 매칭 결과 리포트 (기본 숨김) -->
+            <section id="aiMatchingResult" class="sub-section" style="display: none;">
+              <h2>AI 매칭 결과 리포트</h2>
+              <div class="glass-panel" style="padding: var(--space-xl);">
+                <div class="result-header" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: var(--space-md); margin-bottom: var(--space-md);">
+                  <h3 style="color: var(--color-primary);">최적의 강사 매칭 완료 (정확도 96%)</h3>
+                  <p>입력하신 기관의 특성과 요청사항을 AI가 분석하여 가장 적합한 전문가를 선별했습니다.</p>
+                </div>
+                <div class="result-body" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md);">
+                  <div class="match-card" style="background: rgba(0,0,0,0.3); padding: var(--space-md); border-radius: var(--radius-sm); display: flex; align-items: center; gap: var(--space-md);">
+                    <div class="avatar" style="width: 50px; height: 50px; background: var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px;">👩‍🏫</div>
+                    <div class="info">
+                      <strong>석박사 강사 A</strong><br>
+                      <span style="font-size: var(--text-sm); color: rgba(255,255,255,0.6);">파크골프 전문 / 만족도 4.9</span>
+                    </div>
+                  </div>
+                  <div class="match-card" style="background: rgba(0,0,0,0.3); padding: var(--space-md); border-radius: var(--radius-sm); display: flex; align-items: center; gap: var(--space-md);">
+                    <div class="avatar" style="width: 50px; height: 50px; background: var(--color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px;">👨‍⚕️</div>
+                    <div class="info">
+                      <strong>실버전문 강사 B</strong><br>
+                      <span style="font-size: var(--text-sm); color: rgba(255,255,255,0.6);">실버건강운동 / 경력 15년</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="result-footer" style="margin-top: var(--space-lg); text-align: center;">
+                  <button type="button" class="btn btn-primary" onclick="alert('배정 확정 요청이 센터로 전송되었습니다.')">이강사와 진행 확정</button>
+                  <button type="button" class="btn btn-outline" onclick="alert('다른 강사를 추천받습니다.')" style="margin-left: 10px; border-color: #fff; color: #fff;">다른 강사 추천받기</button>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
       </div>

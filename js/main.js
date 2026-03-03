@@ -248,12 +248,13 @@
   var quickForm = document.getElementById("quickForm");
 
   if (quickForm) {
-    quickForm.addEventListener("submit", function (e) {
+    quickForm.addEventListener("submit", async function (e) {
       e.preventDefault();
 
       var name = quickForm.querySelector('[name="name"]');
       var phone = quickForm.querySelector('[name="phone"]');
       var message = quickForm.querySelector('[name="message"]');
+      var submitBtn = quickForm.querySelector('button[type="submit"]');
 
       // 필수값 검사
       if (!name.value.trim() || !phone.value.trim() || !message.value.trim()) {
@@ -269,8 +270,48 @@
         return;
       }
 
-      alert("문의가 접수되었습니다.\n빠른 시일 내에 연락드리겠습니다.");
-      quickForm.reset();
+      // 로딩 상태 처리
+      var originalText = submitBtn.textContent;
+      submitBtn.textContent = "처리 중...";
+      submitBtn.disabled = true;
+
+      try {
+        // Backend API fetch (가상 URL)
+        const response = await fetch('/api/inquiry', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name.value.trim(),
+            phone: phone.value.trim(),
+            message: message.value.trim(),
+            formId: 'quickForm'
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('서버 응답 오류: ' + response.status);
+        }
+
+        const data = await response.json();
+
+        // 모니터링: 액션 성공
+        if (typeof posthog !== 'undefined') {
+          posthog.capture('form_submitted', { form_id: 'quickForm' });
+        }
+
+        alert("문의가 접수되었습니다.\n빠른 시일 내에 연락드리겠습니다.");
+        quickForm.reset();
+      } catch (error) {
+        console.error("통신 오류:", error);
+        alert("요청 처리 중 오류가 발생했습니다. 다시 시도해주세요.");
+        // 백엔드 오류 발생 시 Sentry 로깅
+        if (typeof Sentry !== 'undefined') {
+          Sentry.captureException(error);
+        }
+      } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
     });
   }
 
@@ -432,8 +473,10 @@
   var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   forms.forEach(function (form) {
-    form.addEventListener("submit", function (e) {
+    form.addEventListener("submit", async function (e) {
       e.preventDefault();
+
+      var submitBtn = form.querySelector('button[type="submit"]');
 
       // 필수 필드 검사
       var requiredFields = form.querySelectorAll("[required]");
@@ -477,8 +520,106 @@
         return;
       }
 
-      alert("신청이 완료되었습니다.\n빠른 시일 내에 연락드리겠습니다.");
-      form.reset();
+      // 파견 폼일 경우 특별 처리 (UI 업데이트)
+      const isDispatchForm = form.id === "dispatchForm";
+
+      // 로딩 상태 처리
+      var originalText = submitBtn.textContent;
+      submitBtn.textContent = "처리 중...";
+      submitBtn.disabled = true;
+
+      try {
+        // FormData 수집
+        const formData = new FormData(form);
+        const requestData = Object.fromEntries(formData.entries());
+        requestData.formId = form.id;
+
+        // Backend API fetch (가상 URL)
+        const response = await fetch('/api/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestData)
+        });
+
+        if (!response.ok) {
+          throw new Error('서버 응답 오류: ' + response.status);
+        }
+
+        const data = await response.json();
+
+        // 모니터링: 액션 성공
+        if (typeof posthog !== 'undefined') {
+          posthog.capture('form_submitted', { form_id: form.id });
+        }
+
+        if (isDispatchForm) {
+          // AI 매칭 결과 리포트 표시
+          const resultSection = document.getElementById("aiMatchingResult");
+          if (resultSection) {
+            resultSection.style.display = "block";
+            // 간단 스크롤 이동
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            alert("파견 신청이 완료되었습니다.\n빠른 시일 내에 연락드리겠습니다.");
+          }
+        } else {
+          alert("신청이 완료되었습니다.\n빠른 시일 내에 연락드리겠습니다.");
+        }
+        form.reset();
+      } catch (error) {
+        console.error("통신 오류:", error);
+        alert("요청 처리 중 오류가 발생했습니다. 다시 시도해주세요.");
+        // 백엔드 오류 발생 시 Sentry 로깅
+        if (typeof Sentry !== 'undefined') {
+          Sentry.captureException(error);
+        }
+      } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
     });
   });
+
+  /* ── 12. AI 온라인 시험 응시 UI 처리 (education.html) ── */
+  var startExamBtn = document.getElementById("startExamBtn");
+  var aiExamSection = document.getElementById("aiExamSection");
+  var submitExamBtn = document.getElementById("submitExamBtn");
+
+  if (startExamBtn && aiExamSection) {
+    startExamBtn.addEventListener("click", function () {
+      aiExamSection.style.display = aiExamSection.style.display === "none" ? "block" : "none";
+      if (aiExamSection.style.display === "block") {
+        aiExamSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+
+  if (submitExamBtn) {
+    submitExamBtn.addEventListener("click", async function () {
+      var originalText = submitExamBtn.textContent;
+      submitExamBtn.textContent = "채점 중...";
+      submitExamBtn.disabled = true;
+
+      try {
+        // AI 모델에 답안 전송 및 결과 확인 (Simulate)
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        if (typeof posthog !== 'undefined') {
+          posthog.capture('exam_submitted', { form_id: 'aiExamForm' });
+        }
+        
+        alert("시험 답안이 제출되었습니다. 담당자가 확인 후 연락드리겠습니다.");
+        aiExamSection.style.display = "none";
+      } catch (error) {
+        alert("제출 중 오류가 발생했습니다.");
+        if (typeof Sentry !== 'undefined') {
+          Sentry.captureException(error);
+        }
+      } finally {
+        submitExamBtn.textContent = originalText;
+        submitExamBtn.disabled = false;
+      }
+    });
+  }
+
 })();
