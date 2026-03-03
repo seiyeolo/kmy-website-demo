@@ -196,7 +196,7 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
-  color: var(--color-dark);
+  color: rgba(255, 255, 255, 0.9);
   line-height: var(--leading-tight);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -795,7 +795,7 @@ textarea:focus-visible {
 .values .container > h2 {
   text-align: center;
   margin-bottom: var(--space-sm);
-  color: var(--color-dark);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .values-grid {
@@ -965,7 +965,7 @@ textarea:focus-visible {
 
 .course-card h3 {
   font-size: var(--text-lg);
-  color: var(--color-dark);
+  color: rgba(255, 255, 255, 0.9);
   padding: var(--space-lg) var(--space-lg) var(--space-sm);
 }
 
@@ -1233,7 +1233,7 @@ textarea:focus-visible {
   display: block;
   font-size: var(--text-sm);
   font-weight: 500;
-  color: var(--color-dark);
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: var(--space-xs);
 }
 
@@ -1535,7 +1535,7 @@ body {
   text-align: right;
   font-family: var(--font-heading);
   font-size: var(--text-lg);
-  color: var(--color-dark);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* ===== 비전 / 미션 ===== */
